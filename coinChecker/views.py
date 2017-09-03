@@ -89,7 +89,12 @@ class CoinRec():
         if( temp < 3 ):
             self.buysig = 1
 
-    def checkCoinRec(self):
+    def checkCoinRec(self, price, volume):
+        self.lastprice = price
+        self.lastvolume = volume
+        temp = (float(self.lastprice) - float(self.targprice)) / float(self.targprice) * 100
+        if( temp < 3 ):
+            self.buysig = 1
         check = self.count
         self.count = check - 1
 
@@ -208,14 +213,18 @@ def checkRec():
     global voluem60minList
     global voluemRate60minList
     global coinRecList
+    global coinList
+
     coinSave = 0
 
     print("checkCoinRec")
     for coinRec in coinRecList:
-        coinRec.checkCoinRec()
-        #print("Add coinRec Name : " + coinRec.name + "coin count : " + str(coinRec.count))
-        if (coinRec.count == 0):
-            coinRecList.remove(coinRec)
+        for coinLast in coinList:
+            if(coinLast.name == coinRec.name):
+                coinRec.checkCoinRec(coinLast.priceList[4], coinLast.volumeList[4])
+                #print("Add coinRec Name : " + coinRec.name + "coin count : " + str(coinRec.count))
+                if (coinRec.count == 0):
+                    coinRecList.remove(coinRec)
 
     print("add coinQec volume")
     for coinVolume in voluem60minList:
@@ -223,7 +232,6 @@ def checkRec():
             coinSave = 0
             for coin in coinRecList:
                 if(coin.name == coinVolume.name):
-                    print("reset 1 : " + coin.name + ", 2 : " + coinVolume.name)
                     #print("Add coinRec Name : " + coinVolume.name)
                     coin.resetCoinRec(coinVolume.priceList[4], coinVolume.volumeList[4])
                     coinSave = 1
@@ -238,8 +246,7 @@ def checkRec():
             coinSave = 0
             for coin in coinRecList:
                 if(coin.name == coinVolumeRate.name):
-                    print("reset 1 : " + coin.name + ", 2 : " + coinVolumeRate.name)
-                    #print("Add coinRec Name : " + coinVolumeRate.name)
+                        #print("Add coinRec Name : " + coinVolumeRate.name)
                     coin.resetCoinRec(coinVolumeRate.priceList[4], coinVolumeRate.volumeList[4])
                     coinSave = 1
 
