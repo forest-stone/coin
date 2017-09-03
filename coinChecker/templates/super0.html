@@ -1,0 +1,33 @@
+<font size="4em" color="black">
+Recommendation coin - Sync Time : {{time}}
+</font>
+
+<table border="1">
+  <tr>
+     <th bgcolor="#228b22">{{ "Coin Name" }}</th>
+     <th bgcolor="#228b22">{{ "Info." }}</th>
+     <th bgcolor="#228b22">{{ "Detect" }}</th>
+     <th bgcolor="#228b22">{{ "Target"}}</th>
+     <th bgcolor="#228b22">{{ "Last"}}</th>
+{% for coin in coinRecLists %}
+   <tr>
+      <td rowspan="2" bgcolor="#228b22">{{ coin.name }}</td>
+      <td>{{ "Price" }}</td>
+      <td>{{ coin.dectprice }}</td>
+      {% if coin == 1 %}
+        <td bgcolor="#228b22">{{ coin.targprice }}</td>
+        <td bgcolor="#228b22">{{ coin.lastprice }}</td>
+      {% else %}
+        <td>{{ coin.targprice }}</td>
+        <td>{{ coin.lastprice }}</td>
+      {% endif %}
+
+  </tr>
+  <tr>
+      <td>{{ "Volume" }}</td>
+      <td>{{ coin.dectvolume }}</td>
+      <td>Count:{{coin.count}}</td>
+      <td>{{ coin.lastvolume}}</td>
+  </tr>
+{% endfor %}
+</table>

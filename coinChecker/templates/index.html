@@ -8,3 +8,68 @@
         <h1>동작함</h1>
     </body>
 </html>
+
+
+<font size="4em" color="black">
+Volume Top 5 (30min)
+</font>
+<table border="1">
+  <tr>
+     <th bgcolor="#cccc88">{{ "Coin Name" }}</th>
+     <th bgcolor="#cccc88">{{ "Info." }}</th>
+     <th bgcolor="#cccc88">{{ "before 30min"}}</th>
+     <th bgcolor="#cccc88">{{ "before 15min"}}</th>
+     <th bgcolor="#cccc88">{{ "last"}}</th>
+     <th bgcolor="#cccc88">{{ "change"}}</th>
+{% for coin in voluem30minLists %}
+   <tr>
+      <td rowspan="2" bgcolor="#cccc88">{{ coin.name }}</td>
+      <td>{{ "Price" }}</td>
+      <td>{{ coin.priceList.2 }}</td>
+      <td>{{ coin.priceList.3 }}</td>
+      <td>{{ coin.priceList.4 }}</td>
+      <td>{{ coin.diffPriceList.0 }}</td>
+  </tr>
+  <tr>
+      <td>{{ "Volume" }}</td>
+      <td>{{ coin.volumeList.2 }}</td>
+      <td>{{ coin.volumeList.3 }}</td>
+      <td>{{ coin.volumeList.4 }}</td>
+      <td bgcolor="#cccc88">{{ coin.diffVolumeList.0 }}</td>
+  </tr>
+{% endfor %}
+</table>
+
+<br />
+
+
+<font size="4em" color="black">
+Volume Rate Top 5 (30min)
+</font>
+<table border="1">
+  <tr>
+     <th bgcolor="#cccc88">{{ "Coin Name" }}</th>
+     <th bgcolor="#cccc88">{{ "Info." }}</th>
+     <th bgcolor="#cccc88">{{ "before 30min"}}</th>
+     <th bgcolor="#cccc88">{{ "before 15min"}}</th>
+     <th bgcolor="#cccc88">{{ "last"}}</th>
+     <th bgcolor="#cccc88">{{ "change(%)"}}</th>
+{% for coin in voluemRate30minLists %}
+   <tr>
+      <td rowspan="2" bgcolor="#cccc88">{{ coin.name }}</td>
+      <td>{{ "Price" }}</td>
+      <td>{{ coin.priceList.2 }}</td>
+      <td>{{ coin.priceList.3 }}</td>
+      <td>{{ coin.priceList.4 }}</td>
+      <td>{{ coin.diffPriceRateList.0 }}</td>
+  </tr>
+  <tr>
+      <td>{{ "Volume" }}</td>
+      <td>{{ coin.volumeList.2 }}</td>
+      <td>{{ coin.volumeList.3 }}</td>
+      <td>{{ coin.volumeList.4 }}</td>
+      <td bgcolor="#cccc88">{{ coin.diffVolumeRateList.0 }}</td>
+  </tr>
+{% endfor %}
+</table>
+<br />
