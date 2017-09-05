@@ -14,7 +14,7 @@ Recommendation coin - Sync Time : {{time}}
       <td rowspan="2" bgcolor="#228b22">{{ coin.name }}</td>
       <td>{{ "Price" }}</td>
       <td>{{ coin.dectprice }}</td>
-      {% if coin == 1 %}
+      {% if coin.buysig == 1 %}
         <td bgcolor="#228b22">{{ coin.targprice }}</td>
         <td bgcolor="#228b22">{{ coin.lastprice }}</td>
       {% else %}
