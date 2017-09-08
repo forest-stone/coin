@@ -6,7 +6,8 @@ Volume Top 10 (60min) - Sync Time : {{time}}
      <th bgcolor="#228b22">{{ "Coin Name" }}</th>
      <th bgcolor="#228b22">{{ "Info." }}</th>
      <th bgcolor="#228b22">{{ "before 1hr"}}</th>
-     <th bgcolor="#228b22">{{ "before 30min"}}</th>
+     <th bgcolor="#228b22">{{ "before 30m"}}</th>
+     <th bgcolor="#228b22">{{ "before 15m"}}</th>
      <th bgcolor="#228b22">{{ "last"}}</th>
      <th bgcolor="#228b22">{{ "change(30m)"}}</th>
      <th bgcolor="#228b22">{{ "change(60m)"}}</th>
@@ -16,6 +17,7 @@ Volume Top 10 (60min) - Sync Time : {{time}}
       <td>{{ "Price" }}</td>
       <td>{{ coin.priceList.0 }}</td>
       <td>{{ coin.priceList.2 }}</td>
+      <td>{{ coin.priceList.3 }}</td>
       <td>{{ coin.priceList.4 }}</td>
       <td>{{ coin.diffPriceList.0 }}</td>
       <td>{{ coin.diffPriceList.1 }}</td>
@@ -24,6 +26,7 @@ Volume Top 10 (60min) - Sync Time : {{time}}
       <td>{{ "Volume" }}</td>
       <td>{{ coin.volumeList.0 }}</td>
       <td>{{ coin.volumeList.2 }}</td>
+      <td>{{ coin.volumeList.3 }}</td>
       <td>{{ coin.volumeList.4 }}</td>
       <td>{{ coin.diffVolumeList.0 }}</td>
       <td bgcolor="#228b22">{{ coin.diffVolumeList.1 }}</td>
@@ -42,6 +45,7 @@ Volume Rate(%) Top 10 (60min)  - Sync Time : {{time}}
      <th bgcolor="#228b22">{{ "Info." }}</th>
      <th bgcolor="#228b22">{{ "before 1hr"}}</th>
      <th bgcolor="#228b22">{{ "before 30min"}}</th>
+     <th bgcolor="#228b22">{{ "before 15m"}}</th>
      <th bgcolor="#228b22">{{ "last"}}</th>
      <th bgcolor="#228b22">{{ "change(30m)"}}</th>
      <th bgcolor="#228b22">{{ "change(60m)"}}</th>
@@ -51,6 +55,7 @@ Volume Rate(%) Top 10 (60min)  - Sync Time : {{time}}
       <td>{{ "Price" }}</td>
       <td>{{ coin.priceList.0 }}</td>
       <td>{{ coin.priceList.2 }}</td>
+      <td>{{ coin.priceList.3 }}</td>
       <td>{{ coin.priceList.4 }}</td>
       <td>{{ coin.diffPriceRateList.0 }}</td>
       <td>{{ coin.diffPriceRateList.1 }}</td>
@@ -59,6 +64,7 @@ Volume Rate(%) Top 10 (60min)  - Sync Time : {{time}}
       <td>{{ "Volume" }}</td>
       <td>{{ coin.volumeList.0 }}</td>
       <td>{{ coin.volumeList.2 }}</td>
+      <td>{{ coin.volumeList.3 }}</td>
       <td>{{ coin.volumeList.4 }}</td>
       <td>{{ coin.diffVolumeRateList.0 }}%</td>
       <td bgcolor="#228b22">{{ coin.diffVolumeRateList.1 }}%</td>

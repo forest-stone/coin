@@ -83,11 +83,15 @@ class CoinRec():
 
     def resetCoinRec(self, price, volume):
         self.count = 24
+        self.dectprice = price
+        self.dectvolume = volume
         self.lastprice = price
         self.lastvolume = volume
         temp = (float(self.lastprice) - float(self.targprice)) / float(self.targprice) * 100
         if( temp < 3 ):
             self.buysig = 1
+        else:
+            self.buysig = 0
 
     def checkCoinRec(self, price, volume):
         self.lastprice = price
@@ -95,6 +99,8 @@ class CoinRec():
         temp = (float(self.lastprice) - float(self.targprice)) / float(self.targprice) * 100
         if( temp < 3 ):
             self.buysig = 1
+        else:
+            self.buysig = 0
         check = self.count
         self.count = check - 1
 
@@ -185,7 +191,7 @@ def rankVolume():
 #  for coin in coinList :
 #        print("Name : " + coin.name + ", price : " + str(coin.price) + ", volume : " + str(coin.volume))
     for coinVolume in coinList:
-        if(float(coinVolume.volumeList[4]) > 150 and coinVolume.name.find("USDT") < 0):
+        if(float(coinVolume.volumeList[0]) > 200 and coinVolume.name.find("USDT") < 0):
 #            topCoinvoluem30minList.append(coinVolume)
             topCoinvoluem60minList.append(coinVolume)
 #            topCoinvoluemRate30minList.append(coinVolume)
@@ -217,15 +223,6 @@ def checkRec():
 
     coinSave = 0
 
-    print("checkCoinRec")
-    for coinRec in coinRecList:
-        for coinLast in coinList:
-            if(coinLast.name == coinRec.name):
-                coinRec.checkCoinRec(coinLast.priceList[4], coinLast.volumeList[4])
-                #print("Add coinRec Name : " + coinRec.name + "coin count : " + str(coinRec.count))
-                if (coinRec.count == 0):
-                    coinRecList.remove(coinRec)
-
     print("add coinQec volume")
     for coinVolume in voluem60minList:
         if(float(coinVolume.diffVolumeList[0]) > 30 or float(coinVolume.diffVolumeList[1]) > 50 ):
@@ -254,6 +251,14 @@ def checkRec():
                 print("volumeRate Append : " + coinVolumeRate.name)
                 coinRecList.append(CoinRec(coinVolumeRate.name,coinVolumeRate.priceList[4],coinVolumeRate.volumeList[4]))
 
+    print("checkCoinRec")
+    for coinRec in coinRecList:
+        for coinLast in coinList:
+            if(coinLast.name == coinRec.name):
+                coinRec.checkCoinRec(coinLast.priceList[4], coinLast.volumeList[4])
+                #print("Add coinRec Name : " + coinRec.name + "coin count : " + str(coinRec.count))
+                if ((coinRec.dectvolume > coinRec.lastvolume) or coinRec.count == 0):
+                    coinRecList.remove(coinRec)
 
 """
 def returnOrderBook (self, currencyPair):
