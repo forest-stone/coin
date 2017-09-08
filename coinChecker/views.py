@@ -191,7 +191,7 @@ def rankVolume():
 #  for coin in coinList :
 #        print("Name : " + coin.name + ", price : " + str(coin.price) + ", volume : " + str(coin.volume))
     for coinVolume in coinList:
-        if(float(coinVolume.volumeList[0]) > 200 and coinVolume.name.find("USDT") < 0):
+        if(float(coinVolume.volumeList[4]) > 200 and coinVolume.name.find("USDT") < 0):
 #            topCoinvoluem30minList.append(coinVolume)
             topCoinvoluem60minList.append(coinVolume)
 #            topCoinvoluemRate30minList.append(coinVolume)
